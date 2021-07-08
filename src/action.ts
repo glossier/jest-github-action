@@ -152,8 +152,8 @@ function getJestCommand(resultsFile: string) {
   const jestOptions = `--testLocationInResults --json ${
     shouldCommentCoverage() ? "--coverage" : ""
   } ${
-    shouldRunOnlyChangedFiles() && context.payload.pull_request?.base.ref
-      ? "--changedSince=" + context.payload.pull_request?.base.ref
+    shouldRunOnlyChangedFiles() && context.payload.pull_request?.base.sha
+      ? "--changedSince=" + context.payload.pull_request?.base.sha
       : ""
   } --outputFile=${resultsFile}`
   const shouldAddHyphen = cmd.startsWith("npm") || cmd.startsWith("npx") || cmd.startsWith("pnpm") || cmd.startsWith("pnpx")
