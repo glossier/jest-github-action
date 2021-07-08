@@ -158,6 +158,7 @@ function getJestCommand(resultsFile: string) {
   } --outputFile=${resultsFile}`
   const shouldAddHyphen = cmd.startsWith("npm") || cmd.startsWith("npx") || cmd.startsWith("pnpm") || cmd.startsWith("pnpx")
   cmd += (shouldAddHyphen ? " -- " : " ") + jestOptions
+  core.debug("Final SHA: " + context.payload.pull_request?.base.sha)
   core.debug("Final test command: " + cmd)
   return cmd
 }
